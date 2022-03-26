@@ -7,7 +7,7 @@
   - this means programs are put through a compiler / linker before producing an executable
 - Provides support for the following
   - Garbage Collection 
-  - Concurrency
+  - Concurrency - this is **NOT** parallelism, concurrency simply means tasks run in overlapping time periods - not necessarily at the same time
     - Via `go routines`, `channels`, and the `select` statement
   - Type inference
   - Interfaces
@@ -118,3 +118,4 @@
 - Go website: https://go.dev/
 - Geeks for Geeks: https://www.geeksforgeeks.org/go-programming-language-introduction/
 - Tutorialspoint: https://www.tutorialspoint.com/go/go_overview.htm
+- https://devhints.io/go
