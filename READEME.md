@@ -27,7 +27,14 @@
 - **[OPTIONAL]** - Install Goland IDE (Intellij) `https://www.jetbrains.com/go/`
   - Use school email to access these resources free
 - Running a .go file
-  - Simply find a terminal, go to the location of the file, and run `go run $FILENAME.go`
+  - Unlike other programming languages, Go requires you to organize your code in a specific way. 
+    - A `workspace` is a directory hierarchy with `bin` and `src` at it's root
+      - `bin` contains executable commands (binaries) built and installed by the go tool
+      - `src` contains Go source files (typically managed by version control)
+        - Once you have a package built, go to the terminal (into the package directory) and run `go install .` 
+          - this command tells the go tool to include the directory (making it visible to you)
+
+[//]: # (- Simply find a terminal, go to the location of the file, and run `go run $FILENAME.go`)
 
 ###Program Structure
 - First line of program **MUST** define the package where the program is
@@ -119,3 +126,4 @@
 - Geeks for Geeks: https://www.geeksforgeeks.org/go-programming-language-introduction/
 - Tutorialspoint: https://www.tutorialspoint.com/go/go_overview.htm
 - https://devhints.io/go
+- https://go.dev/doc/gopath_code
