@@ -12,9 +12,8 @@ package main
 import (
 	Client_Server "Programs/Client-Server"
 	"Programs/Hello-World"
-	"Programs/Queue"
+	Queue "Programs/Queue"
 	"fmt"
-	"math/rand"
 	"strings"
 )
 
@@ -70,31 +69,8 @@ func hello() {
 
 }
 
-func queue(cnt int) {
-	q := &Queue.Queue[int]{}
-	q.Enqueue(1)
-	first := q.Dequeue()
-
-	if first != 1 {
-		printTest(fmt.Sprintf("FAILURE: Queue returned %d != 1", first))
-		return
-	} else {
-		printTest(fmt.Sprintf("SUCCESS: Queue passed test 0 of %d - %d == 1", cnt, first))
-		testQueue := [1000]int{}
-		// enqueue a bunch of numbers and check them
-		for i := 0; i < cnt; i++ {
-			curRand := rand.Int()
-			testQueue[i] = curRand
-			q.Enqueue(curRand)
-		}
-		// now run the 'test'
-		for i := 0; i < cnt; i++ {
-			if testQueue[i] == q.Dequeue() {
-				printTest(fmt.Sprintf("SUCCESS: Queue passed test %d of %d - %d == 1", i, cnt, first))
-			}
-		}
-
-	}
+func queueCall() {
+	Queue.Queue()
 }
 
 func ServerClient() {
@@ -126,6 +102,6 @@ func ServerClient() {
 // test method
 func main() {
 	//hello()
-	//queue(50)
-	ServerClient()
+	queueCall()
+	//ServerClient()
 }

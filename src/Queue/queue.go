@@ -1,36 +1,42 @@
-/*
-	IT 327 Project - Golang Study
-	Queue implementation (of type integer, but can be anything)
-	Testing occurs in Test
-*/
-
 package Queue
 
-const MAX_SIZE = 1000
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
-type Queue[T any] struct {
-	count int
-	Q     [MAX_SIZE]T
+func addToQueue(queue[] string, person string) []string {
+	queue = append(queue,person)
+	fmt.Println("Person added to queue: ", person)
+	return queue
 }
 
-func (q *Queue[T]) Enqueue(itm T) {
-	q.Q[q.count] = itm
-	q.count++
+func removeFromQueue(queue[] string) ([]string) {
+	person := queue[0]
+	fmt.Println("Person removed from queue: ",person)
+	return queue[1:]
 }
 
-func (q *Queue[T]) Dequeue() (x T) {
-	x = q.Q[0]
-	for i := 0; i < q.count; i++ {
-		q.Q[i] = q.Q[i+1]
+func Queue() {
+	var queue[] string
+	queue = addToQueue(queue,"Bob")
+	queue = addToQueue(queue,"Carol")
+	queue = addToQueue(queue,"George")
+	queue = addToQueue(queue,"Judith")
+
+	fmt.Println("\nWelcome to the waiting list!\n")
+	fmt.Println("You have been added into the queue at number 5\nCurrent queue: ",queue)
+	queue = addToQueue(queue,"You")
+	fmt.Println("Updated queue: ",queue)
+	for i := range queue {
+		sleepTime := rand.Intn(5)
+		time.Sleep(time.Duration(sleepTime)*time.Second)
+		queue = removeFromQueue(queue)
+		fmt.Println("Updated queue: ",queue)
+		if i == 3 {
+			fmt.Println("You're up!")
+		}
 	}
-	q.count--
-	return
+	fmt.Println("\nThanks for coming!")
 }
-
-func (q *Queue[T]) IsEmpty() bool { return q.count == 0 }
-
-func (q *Queue[T]) Peek() T { return q.Q[0] }
-
-func (q *Queue[T]) IsFull() bool { return q.count == MAX_SIZE-1 }
-
-func (q *Queue[T]) Size() int { return q.count }
