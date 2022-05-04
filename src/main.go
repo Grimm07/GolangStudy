@@ -11,6 +11,7 @@ package main
 
 import (
 	Client_Server "Programs/Client-Server"
+	GroceryRegisterSimulator "Programs/Grocery-Register-Simulator"
 	"Programs/Hello-World"
 	Queue "Programs/Queue"
 	"fmt"
@@ -73,6 +74,10 @@ func queueCall() {
 	Queue.Queue()
 }
 
+func registerCall() {
+	GroceryRegisterSimulator.Register()
+}
+
 func ServerClient() {
 	s := Client_Server.Server{}
 
@@ -102,6 +107,7 @@ func ServerClient() {
 // test method
 func main() {
 	//hello()
-	queueCall()
+	registerCall()
+	//queueCall()
 	//ServerClient()
 }
